@@ -16,6 +16,18 @@ LED 使用 D1 Mini 內建 LED（GPIO2 / D4），低電位點亮。
 
 > PN532 需切換到 **I2C 模式**（板上 DIP 開關 / 跳線）。
 
+### 硬體實作筆記
+
+實際組裝環境：
+
+- **PN532 模組**：紅色 NFC 板，右側 2-pin DIP 切換開關需撥到 **I2C 模式**
+  （SPI/I2C/HSU 三選一，務必設成 I2C，否則 `nfc.begin()` 偵測不到）。
+- **主控板**：WeMos / LOLIN **D1 Mini Pro**（ESP8266，帶 IPEX 外接天線座，
+  本機用 Rainsun 陶瓷天線）。一般 D1 Mini 亦適用。
+- **連接方式**：母對母杜邦線，PN532 底部 `GND / VCC / SDA / SCL` 4 pin
+  對接 D1 Mini，對應關係如上表（SDA→D2、SCL→D1、VCC→5V、GND→GND）。
+- 供電：以 D1 Mini 的 5V 供 PN532 VCC；亦可改用 3V3，視模組而定。
+
 ## 編譯與燒錄
 
 - Arduino IDE（或 arduino-cli）
